@@ -1,0 +1,161 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Pr&aacute;ctica 3: Se&ntilde;ales continuas</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-16"><meta name="DC.source" content="SySPrac03JoseDavidLicona.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Pr&aacute;ctica 3: Se&ntilde;ales continuas</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Portada</a></li><li><a href="#2">Objetivos</a></li><li><a href="#3">Introducci&oacute;n</a></li><li><a href="#13">Desarrollo</a></li><li><a href="#14">Punto 1.</a></li></ul></div><h2 id="1">Portada</h2><p>Nombre: Licona &Aacute;lvarez Jos&eacute; David</p><p>No. de Boleta: 2014030714</p><p>Carrera: Ingenier&iacute;a Telem&aacute;tica.</p><p>Grupo: 2TV1</p><h2 id="2">Objetivos</h2><div><ul><li>Manipulaci&oacute;n b&aacute;sica de MATLAB</li></ul></div><div><ul><li>Gr&aacute;ficas de se&ntilde;ales reales y complejas continuas</li></ul></div><div><ul><li>Transformaci&oacute;n de se&ntilde;ales continuas (escalamientos y traslaciones)</li></ul></div><div><ul><li>Calculo de energ&iacute;a y potencia de se&ntilde;ales continuas</li></ul></div><h2 id="3">Introducci&oacute;n</h2><p>MATLAB.</p><p>MATLAB (Matrix Laboratory, &#8220;laboratorios de matrices&#8221;). Software matem&aacute;tico con entorno de desarrollo integrado (IDE) que tiene un lenguaje de programaci&oacute;n propio (Lenguaje M) y es multiplataforma (Unix, Windows y Apple Mac Os X). Software de un gran uso en Centros de Investigaci&oacute;n y Desarrollo as&iacute; como en universidades.</p><p>En 1984 surge la primera versi&oacute;n, creado por Cleve Moler, con la idea de usar paquetes de subrutinas escritas en Fortran en los cursos de An&aacute;lisis Num&eacute;rico y Algebra Lineal, sin tener una necesidad de programas que usaran este lenguaje.</p><p>El lenguaje de programaci&oacute;n M se cre&oacute; en 1970 proporcionando un acceso sencillo al Software de matrices LINPACK y EISPACK sin tener que hacer uso del lenguaje Fortran.</p><p>Ya en 2004 se apreciaba que MATLAB era usado por aproximadamente m&aacute;s de un mill&oacute;n de personas, tanto acad&eacute;micos como empresarios.</p><p>&iquest;Qu&eacute; es Octave?</p><p>Octave es un lenguaje de alto nivel para realizar c&aacute;lculos num&eacute;ricos en el ordenador, y tambi&eacute;n es un programa capaz de interpretar este lenguaje y realizar los c&aacute;lculos. Octave ofrece una interfaz de usuario interactiva, orientada a l&iacute;nea de comandos, pero tambi&eacute;n puede ser utilizado en modo no interactivo, leyendo sus &oacute;rdenes de fichero.</p><p>Octave originalmente fue desarrollado para facilitar la tarea a los estudiantes de Ingenier&iacute;a Qu&iacute;mica de la universidad de Texas, sin que estos tuvieran que enfrentarse a las dificultades de la programaci&oacute;n. Su flexibilidad en seguida lo hizo popular y su uso se expandi&oacute; a otros problemas relacionados con el &aacute;lgebra lineal y las ecuaciones diferenciales y favoreci&oacute; su desarrollo, agregando las aportaciones de la comunidad de usuarios.</p><p>Otros programas de caracter&iacute;sticas similares, y hasta cierto punto compatibles, son son el lenguaje R de la FSF, Matlab y Scilab. Estos dos &uacute;ltimos propietarios. Octave es software libre (bajo licencia GNU), lo que significa que se puede usar y redistribuir libremente, y que cualquiera puede ayudar para mejorarlo.</p><p>Se puede acceder al siguiente <a href="https://www.edx.org/es/course/matlab-octave-beginners-epflx-matlabeoctavebeginnersx">enlace</a> para realizar un curso de Octave.</p><p>&iquest;Qu&eacute; es Python?</p><p>Python es un lenguaje de scripting independiente de plataforma y orientado a objetos, preparado para realizar cualquier tipo de programa, desde aplicaciones Windows a servidores de red o incluso, p&aacute;ginas web. Es un lenguaje interpretado, lo que significa que no se necesita compilar el c&oacute;digo fuente para poder ejecutarlo, lo que ofrece ventajas como la rapidez de desarrollo e inconvenientes como una menor velocidad.</p><p>El creador del lenguaje es un europeo llamado Guido Van Rossum. Hace ya m&aacute;s de una d&eacute;cada que dise&ntilde;o Python, ayudado y motivado por su experiencia en la creaci&oacute;n de otro lenguaje llamado ABC. El objetivo de Guido era cubrir la necesidad de un lenguaje orientado a objetos de sencillo uso que sirviese para tratar diversas tareas dentro de la programaci&oacute;n que habitualmente se hac&iacute;a en Unix usando C.</p><p>Se pueded acceder al siguiente <a href="https://www.edx.org/es/course/introduction-to-python-fundamentals-3">enlace</a> para realizar un curso de Python.</p><h2 id="13">Desarrollo</h2><h2 id="14">Punto 1.</h2><pre class="codeinput"> <span class="keyword">function</span> t=fun1(w,a)
+t=a/[(a^2)+(w^2)]
+<span class="keyword">end</span>
+</pre><pre class="codeoutput error">Not enough input arguments.
+
+Error in SySPrac03JoseDavidLicona (line 78)
+t=a/[(a^2)+(w^2)]
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Práctica 3: Señales continuas
+%
+% 
+%%
+%% Portada
+%
+% Nombre: Licona Álvarez José David 
+%
+% No. de Boleta: 2014030714
+%
+% Carrera: Ingeniería Telemática.
+%
+% Grupo: 2TV1
+%
+%% Objetivos
+%
+% * Manipulación básica de MATLAB
+%
+% * Gráficas de señales reales y complejas continuas
+%
+% * Transformación de señales continuas (escalamientos y traslaciones)
+%
+% * Calculo de energía y potencia de señales continuas
+%
+%% Introducción
+%%
+% MATLAB.
+%
+% MATLAB (Matrix Laboratory, “laboratorios de matrices”). Software matemático con entorno de desarrollo integrado (IDE)
+% que tiene un lenguaje de programación propio (Lenguaje M) y es multiplataforma (Unix, Windows y Apple Mac Os X).
+% Software de un gran uso en Centros de Investigación y Desarrollo así como en universidades.
+%% 
+% En 1984 surge la primera versión, creado por Cleve Moler, con la idea de usar paquetes de subrutinas escritas en Fortran
+% en los cursos de Análisis Numérico y Algebra Lineal, sin tener una necesidad de programas que usaran este lenguaje.
+%%
+% El lenguaje de programación M se creó en 1970 proporcionando un acceso sencillo al Software de matrices LINPACK y EISPACK
+% sin tener que hacer uso del lenguaje Fortran.
+%%
+% Ya en 2004 se apreciaba que MATLAB era usado por aproximadamente más de un millón de personas, tanto académicos como
+% empresarios.
+%
+% ¿Qué es Octave?
+%
+% Octave es un lenguaje de alto nivel para realizar cálculos numéricos en el ordenador, y también es un programa capaz de
+% interpretar este lenguaje y realizar los cálculos. Octave ofrece una interfaz de usuario interactiva, orientada a línea
+% de comandos, pero también puede ser utilizado en modo no interactivo, leyendo sus órdenes de fichero.
+%%
+% Octave originalmente fue desarrollado para facilitar la tarea a los estudiantes de Ingeniería Química de la universidad
+% de Texas, sin que estos tuvieran que enfrentarse a las dificultades de la programación. Su flexibilidad en seguida lo
+% hizo popular y su uso se expandió a otros problemas relacionados con el álgebra lineal y las ecuaciones diferenciales y
+% favoreció su desarrollo, agregando las aportaciones de la comunidad de usuarios.
+%%
+% Otros programas de características similares, y hasta cierto punto compatibles, son son el lenguaje R de la FSF, Matlab
+% y Scilab. Estos dos últimos propietarios. Octave es software libre (bajo licencia GNU), lo que significa que se puede usar
+% y redistribuir libremente, y que cualquiera puede ayudar para mejorarlo. 
+%%
+% Se puede acceder al siguiente <https://www.edx.org/es/course/matlab-octave-beginners-epflx-matlabeoctavebeginnersx enlace>
+% para realizar un curso de Octave.
+%
+% ¿Qué es Python? 
+%
+% Python es un lenguaje de scripting independiente de plataforma y orientado a objetos, preparado para realizar cualquier
+% tipo de programa, desde aplicaciones Windows a servidores de red o incluso, páginas web. Es un lenguaje interpretado, lo
+% que significa que no se necesita compilar el código fuente para poder ejecutarlo, lo que ofrece ventajas como la rapidez
+% de desarrollo e inconvenientes como una menor velocidad.
+%%
+% El creador del lenguaje es un europeo llamado Guido Van Rossum. Hace ya más de una década que diseño Python, ayudado y
+% motivado por su experiencia en la creación de otro lenguaje llamado ABC. El objetivo de Guido era cubrir la necesidad de
+% un lenguaje orientado a objetos de sencillo uso que sirviese para tratar diversas tareas dentro de la programación que
+% habitualmente se hacía en Unix usando C. 
+%%
+% Se pueded acceder al siguiente <https://www.edx.org/es/course/introduction-to-python-fundamentals-3 enlace>
+% para realizar un curso de Python.
+%
+%% Desarrollo
+%% Punto 1.
+ function t=fun1(w,a)
+t=a/[(a^2)+(w^2)]
+end
+%% 
+
+
+##### SOURCE END #####
+--></body></html>
